@@ -5,6 +5,7 @@ export const types = {
   INCREASE: "INCREASE",
   DECREASE: "DECREASE",
   RESET: "RESET",
+  INCREASEODD: "INCREASEODD",
 }
 
 // actions
@@ -28,6 +29,12 @@ export const reset = () => {
   }
 }
 
+export const increaseodd = () => {
+  return {
+    type: types.INCREASEODD,
+  }
+}
+
 
 //initial state in the store
 const initState = {
@@ -39,35 +46,28 @@ const initState = {
 const counter = (state = initState, action) => {
   switch (action.type) {
     case types.INCREASE:
-      // state.count+=1// noooooooon
-
-      // 1ère solution (non recommandé)
-      // const newState={}
-      // newState.count=state.count+1
-      // return newState
-
-      // 2ème solution
-      // const newState={...state}
-      // newState.count+=1
-      // return newState
-
-      // 3ème solution
       const newState = {
         ...state, // count :0 , age:18, name:""
         count: state.count + 1,
       }
       return newState
 
+      case types.INCREASEODD:
+        return {
+          ...state,
+          count: state.count + 2,
+        }
+
     case types.DECREASE:
       return {
         ...state,
         count: state.count - 1,
       }
-    case types.RESET:
-      return {
-        ...state,
-        count: 0,
-      }
+      case types.RESET:
+        return {
+          ...state,
+          count: 0,
+        }
 
     
     default:

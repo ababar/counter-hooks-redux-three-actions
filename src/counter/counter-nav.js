@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux"
 import {
   increase,
   decrease,
-  reset,
+  reset, increaseodd
 } from "../redux"
 
 export const CounterNav = () => {
@@ -35,7 +35,10 @@ export const CounterNav = () => {
       >
         Increase
       </button>
-      <button>
+      <button
+        onClick={() => {
+          dispatch(increaseodd())
+        }}>
         Increase odd number
       </button>
       <button>
