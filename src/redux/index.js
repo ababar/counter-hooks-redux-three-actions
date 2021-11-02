@@ -5,7 +5,8 @@ export const types = {
   INCREASE: "INCREASE",
   DECREASE: "DECREASE",
   RESET: "RESET",
-  INCREASEODD: "INCREASEODD",
+  INCREASE_ODD: "INCREASE_ODD",
+  INCREASE_SPECIFIC_VALUE: "INCREASE_SPECIFIC_VALUE"
 }
 
 // actions
@@ -29,12 +30,18 @@ export const reset = () => {
   }
 }
 
-export const increaseodd = () => {
+export const increaseOdd = () => {
   return {
-    type: types.INCREASEODD,
+    type: types.INCREASE_ODD,
   }
 }
 
+export const increaseSpecificValue = (value) => {
+  return {
+    type: types.INCREASE_SPECIFIC_VALUE,
+    value: value,
+  }
+}
 
 //initial state in the store
 const initState = {
@@ -52,19 +59,19 @@ const counter = (state = initState, action) => {
       }
       return newState
 
-      case types.INCREASEODD:
-        if (state.count%2==0) {
+      case types.INCREASE_ODD:
+        if (state.count%2==1) {
           return {
             ...state,
-            count: state.count + 2,
+            count: state.count + 1,
           }
-          
+
         } else {
-          return {
-            ...state,
-            count: 0,
-          }
+          return state
         }
+      case types.INCREASE_SPECIFIC_VALUE:
+        //A developper
+          return state
     case types.DECREASE:
       return {
         ...state,
