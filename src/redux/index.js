@@ -58,6 +58,7 @@ const counter = (state = initState, action) => {
             ...state,
             count: state.count + 2,
           }
+          
         } else {
           return {
             ...state,
