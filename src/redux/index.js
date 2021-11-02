@@ -47,17 +47,23 @@ const counter = (state = initState, action) => {
   switch (action.type) {
     case types.INCREASE:
       const newState = {
-        ...state, // count :0 , age:18, name:""
+        ...state,
         count: state.count + 1,
       }
       return newState
 
       case types.INCREASEODD:
-        return {
-          ...state,
-          count: state.count + 2,
+        if (state.count%2==0) {
+          return {
+            ...state,
+            count: state.count + 2,
+          }
+        } else {
+          return {
+            ...state,
+            count: 0,
+          }
         }
-
     case types.DECREASE:
       return {
         ...state,
